@@ -219,7 +219,17 @@ Prefab:
     - target: {fileID: 50000011852983628, guid: 3b46ae65e31591a42bf24c726148680b,
         type: 2}
       propertyPath: m_GravityScale
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50000011852983628, guid: 3b46ae65e31591a42bf24c726148680b,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 50000011852983628, guid: 3b46ae65e31591a42bf24c726148680b,
+        type: 2}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b46ae65e31591a42bf24c726148680b, type: 2}
@@ -240,8 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce695748d6798ec4b8309c5bc3838ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 276
-  right: 275
+  speed: 8
+  jumpForce: 350
   jump: 115
 --- !u!1001 &1840555374
 Prefab:

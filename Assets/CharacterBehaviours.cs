@@ -3,13 +3,18 @@ using System.Collections;
 
 public class CharacterBehaviours : MonoBehaviour {
 
-	public KeyCode left = KeyCode.LeftArrow;//botão pra andar pra esquerda
-	public KeyCode right = KeyCode.RightArrow;//botão pra andar pra direita
+	public float speed = 8f;
+	public float jumpForce = 350f;
+	private bool facingRight = true;
+	private float movX;
+	private Rigidbody2D rb;
+	private Transform transform;
 	public KeyCode jump = KeyCode.S;//botão pra pular
 
 	// Use this for initialization
 	void Start () {
-		
+		rb = GetComponent<Rigidbody2D> ();//recebe o componente Ridigbody2D do personagem
+		transform = GetComponent<Transform>();//recebe o componente Transform do personagem 
 	}
 	
 	// Update is called once per frame
@@ -18,22 +23,37 @@ public class CharacterBehaviours : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		Walk();
+		Move();
+		Jump ();
 	}
 
-	void Walk(){
-		if (Input.GetKey (left)) {//Input para andar para esquerda
-			Vector2 goLeft = new Vector2 (-0.2f, 0.0f);
-			transform.Translate (goLeft);
-		} else if (Input.GetKey (right)) {//input para andar para a direita
-			Vector2 goRight = new Vector2 (0.2f, 0.0f);
-			transform.Translate (goRight);
+	void Flip(){//função para inverter o sprite
+		facingRight = !facingRight;
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
+	}
+
+	void Move(){
+		movX = Input.GetAxis ("Horizontal");
+		//caso esteja se movimentando para a direita e o sprite esteja para o lado esquerdo
+		if (movX > 0 && !facingRight) {
+			Flip ();
+		//caso esteja se movimentando para a esquerda e o sprite esteja para o lado direito
+		} else if (movX < 0 && facingRight) {
+			Flip ();
 		}
+
+		rb.velocity = new Vector2 (movX * speed, rb.velocity.y);
 	}
 
 	void Jump(){
-		if (Input.GetKey (jump)) {
-			
+		
+		var AbsVelY = Mathf.Abs (rb.velocity.y);
+
+		if(Input.GetKeyDown(jump) && (AbsVelY <= 0.05f)){
+			rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
 		}
 	}
+		
 }
