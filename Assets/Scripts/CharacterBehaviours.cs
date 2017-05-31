@@ -8,6 +8,7 @@ public class CharacterBehaviours : MovingCharacter {
 	//public int vidas = 1;//por enquanto vidas = 1, pode mudar depois
 	public Vector2 distToGround;
 	public Bounds b;
+	bool candoublejump = false;
 
 	void Start () {
 		speed = 12f;
@@ -24,27 +25,19 @@ public class CharacterBehaviours : MovingCharacter {
 	}
 
 	bool grounded() {
-		return Physics2D.Raycast (transform.position, -Vector3.up, (float) distToGround.y + 0.1f);
+		return Physics2D.Raycast (transform.position, -Vector3.up, 1f);
 	}
 
 	void Jump() {
-		
-//		var AbsVelY = Mathf.Abs (rb.velocity.y);
-//
-//		if(Input.GetKeyDown(jump) && (AbsVelY <= 0.05f)){
-//			rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
-//		}
-		bool candoublejump = false;
-
 		if (Input.GetKeyDown (jump)) {
 			if (grounded()) {
-				//rb.velocity.y = 0;
-				rb.AddForce (new Vector2 (0, jumpForce));
+				rb.AddForce(new Vector2(0, -rb.velocity.y));
+				rb.AddForce(new Vector2 (0, jumpForce));
 				candoublejump = true;
 			} else {
 				if (candoublejump) {
 					candoublejump = false;
-					//rb.velocity.y = 0;
+					rb.AddForce(new Vector2(0, -rb.velocity.y));
 					rb.AddForce (new Vector2 (0, jumpForce));
 				}
 			}
