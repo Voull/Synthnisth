@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -18,9 +18,15 @@ public class CharacterBehaviours : MovingCharacter {
 	//KeyCode strike = KeyCode.D;//botão pra atacar
 	//Power effect;
 
+	// Use this for initialization
 	void Start () {
 		life = totalLife;
 		speed = 20f;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
 	}
 
 	void FixedUpdate(){
@@ -107,5 +113,5 @@ public class CharacterBehaviours : MovingCharacter {
 	/*It was too glowing to be called a sword. 
 	 * Magenta, shining, heavy, and far too 80's. 
 	 * Indeed, it was a heap of raw motherfucking neon vapor-hazard.
-    */
+   */
 }
