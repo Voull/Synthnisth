@@ -2,29 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingCharacter : MonoBehaviour {
+abstract public class MovingCharacter : MonoBehaviour {
 
+
+	public int direction = 1;
 	public float speed;
-	public bool facingRight = true;
-	public Rigidbody2D rb;
+	public Rigidbody2D rb;//passar o prefab do objeto a qual este código vai ser anexado como parametro no inspector
 	public Transform transform;
 
-	void Start () {
-	}
-	
-	void Update () {
-	}
-
-	void Flip(){//função para inverter o sprite
-		facingRight = !facingRight;
+	public void Flip(){//esse bloco inverte o sprite e pode ser usado para mudar a direção do movimento (Pigeon)
+		direction *= -1;
 		Vector3 scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
 	}
 
-	public void Move(float movX){
-		//Esse bloco iŕá virar o personagem caso ele vire para o outro lado
-		if (movX > 0 && !facingRight || movX < 0 && facingRight) {
+	virtual public void Move(float movX){//esse bloco inicialmente faz a movimentação do personagem apenas no eixo x recebendo a direção como parâmetro e invertendo o sprite quando essa é multiplicada por -1
+		if (movX > 0 && direction < 0 || movX < 0 && direction > 0) {
 			Flip ();
 		}
 		rb.velocity = new Vector2 (movX * speed, rb.velocity.y);
