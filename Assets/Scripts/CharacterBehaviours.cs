@@ -1,9 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 public enum Power {powerUp1, powerUp2, powerUp3};
+=======
+public enum Power {powerUp1, invencibleRush, swordBomb};
+>>>>>>> c7e442b... Alterações diversas
+=======
+public enum Power {powerUp1, powerUp2, powerUp3};
+>>>>>>> c7c11e0... Revert "Alterações diversas"
 public class CharacterBehaviours : MovingCharacter {
 
 	//public bool striking = false;
@@ -181,7 +189,14 @@ public class CharacterBehaviours : MonoBehaviour {
 	/*It was too glowing to be called a sword. 
 	 * Magenta, shining, heavy, and far too 80's. 
 	 * Indeed, it was a heap of raw motherfucking neon vapor-hazard.
+<<<<<<< HEAD
     */
+<<<<<<< HEAD
 =======
 >>>>>>> 702112b... Adição do Comportamento dos Pombos
+=======
+>>>>>>> c7e442b... Alterações diversas
+=======
+   */
+>>>>>>> c7c11e0... Revert "Alterações diversas"
 }
