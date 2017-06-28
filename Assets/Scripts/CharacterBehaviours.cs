@@ -1,7 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12,13 +13,17 @@ public enum Power {powerUp1, invencibleRush, swordBomb};
 =======
 public enum Power {powerUp1, powerUp2, powerUp3};
 >>>>>>> c7c11e0... Revert "Alterações diversas"
+=======
+public enum Power {powerUp1, invencibleRush, swordBomb};
+>>>>>>> 303dd99... Atualizações diversas
 public class CharacterBehaviours : MovingCharacter {
 
 	//public bool striking = false;
 	public int jumps = 0;//valor que controla a quantidade de saltos realizada
 	public float knockBack = 0;//valor que controla o tempo de "atordoamento" após levar dano
 	public BoxCollider2D bc;//passar o character como parâmetro no inspector
-	bool effect = false;
+	public Sword sword;
+	bool _invencibleRush, _swordBomb;
 	int totalLife = 4;
 	int life;
 	float jumpForce = 550f;
@@ -40,7 +45,6 @@ public class CharacterBehaviours : MonoBehaviour {
 	public KeyCode jump = KeyCode.S;//botão pra pular
 >>>>>>> 702112b... Adição do Comportamento dos Pombos
 
-	// Use this for initialization
 	void Start () {
 <<<<<<< HEAD
 		life = totalLife;
@@ -50,17 +54,15 @@ public class CharacterBehaviours : MonoBehaviour {
 		transform = GetComponent<Transform>();//recebe o componente Transform do personagem 
 >>>>>>> 702112b... Adição do Comportamento dos Pombos
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	void FixedUpdate(){
 <<<<<<< HEAD
 		if (knockBack <= 0) {
 			Move (Input.GetAxis ("Horizontal"));//isso passa como parametros os eixos horizontais. É necessário mecher nos axis do Unity e retirar o "a" e o "d" como gatilhos secudarios de horizontals
 			Jump ();
+			/*if (Input.GetKeyDown (strike) && striking == false) {
+				StartCoroutine (Strike ());
+			}*/
 		} else {
 			knockBack -= 1 * Time.deltaTime;
 		}
@@ -128,17 +130,40 @@ public class CharacterBehaviours : MonoBehaviour {
 		}
 	}
 
-	/*public IEnumerator Invencibility(){
-		
+	IEnumerator InvencibleRush(){
+		_invencibleRush = true;
+		speed = 30;
+		jumpForce = 750;
+		sword.striking = true;
+		invencibilityTime = 5;
+		yield return new WaitForSeconds (5);
+		speed = 20;
+		jumpForce = 550;
+		sword.striking = false;
+		_invencibleRush = false;
+	}
+
+	/*IEnumerator SwordBomb (){
+		print ("run");
+		_swordBomb = true;
+		if (Input.GetKeyDown (sword.strike) && _swordBomb == true && knockBack <= 0) {
+			
+		}
+		yield return new WaitForSeconds (5);
+		_swordBomb = false;
+		print ("acabou");
 	}*/
 
 	void PowerUp (Power power){
 		switch (power) {
 		case Power.powerUp1:
 			break;
-		case Power.powerUp2:
+		case Power.invencibleRush:
+			if (_invencibleRush == false){
+				StartCoroutine (InvencibleRush ());
+			}
 			break;
-		case Power.powerUp3:
+		case Power.swordBomb:
 			break;
 		default:
 			break;
@@ -164,23 +189,23 @@ public class CharacterBehaviours : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D (Collider2D other){
-		/*if (other.gameObject.tag == "Enemy" && invencibilityTime <= 0 && this.gameObject.name == "Character") {//esse bloco faz o personagem recuar se ele levar um ataque
+		if (other.gameObject.tag == "Enemy" && invencibilityTime <= 0 && this.gameObject.name == "Character") {//esse bloco faz o personagem recuar se ele levar um ataque
 			knockBack = 0.75f;
 			invencibilityTime = 1.5f;
 			rb.velocity = new Vector2 (0, 0);
 			rb.AddForce (new Vector2 (Mathf.Sign (transform.position.x - other.transform.position.x) * 5, 2), ForceMode2D.Impulse);
-		} else*/ if (other.gameObject.tag == "Insta Kill") {//esse bloco recarrega a fase caso o protagonista encoste em algum objeto que o mate instantaneamente
+		} else if (other.gameObject.tag == "Insta Kill") {//esse bloco recarrega a fase caso o protagonista encoste em algum objeto que o mate instantaneamente
 			GameOver ();
 		}
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
-		/*if (other.gameObject.tag == "Enemy" && invencibilityTime <= 0 && transform.parent == null) {//esse bloco faz a mesma coisa que o superior, apenas foi adicionadopara deixar o gameplay mais flúido
+		if (other.gameObject.tag == "Enemy" && invencibilityTime <= 0 && this.gameObject.name == "Character") {//esse bloco faz a mesma coisa que o superior, apenas foi adicionadopara deixar o gameplay mais flúido
 			knockBack = 0.75f;
 			invencibilityTime = 1.5f;
 			rb.velocity = new Vector2 (0, 0);
 			rb.AddForce (new Vector2 (Mathf.Sign (transform.position.x - other.transform.position.x) * 5, 2), ForceMode2D.Impulse);
-		}else*/ if (other.gameObject.tag == "Insta Kill") {//esse bloco faz a mesma coisa que o superior, apenas foi adicionadopara deixar o gameplay mais flúido
+		}else if (other.gameObject.tag == "Insta Kill") {//esse bloco faz a mesma coisa que o superior, apenas foi adicionadopara deixar o gameplay mais flúido
 			GameOver ();
 		}
 	}
@@ -189,6 +214,7 @@ public class CharacterBehaviours : MonoBehaviour {
 	/*It was too glowing to be called a sword. 
 	 * Magenta, shining, heavy, and far too 80's. 
 	 * Indeed, it was a heap of raw motherfucking neon vapor-hazard.
+<<<<<<< HEAD
 <<<<<<< HEAD
     */
 <<<<<<< HEAD
@@ -199,4 +225,7 @@ public class CharacterBehaviours : MonoBehaviour {
 =======
    */
 >>>>>>> c7c11e0... Revert "Alterações diversas"
+=======
+    */
+>>>>>>> 303dd99... Atualizações diversas
 }
