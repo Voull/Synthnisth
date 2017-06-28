@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  speed: 20
+  speed: 0
   rb: {fileID: 50308046594526928}
   transform: {fileID: 4912968299331574}
   jumps: 0
