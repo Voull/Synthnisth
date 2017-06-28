@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212000012556192800}
   - component: {fileID: 61000011880084404}
   m_Layer: 0
-  m_Name: Basic Platform
+  m_Name: plataforma_basica
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
