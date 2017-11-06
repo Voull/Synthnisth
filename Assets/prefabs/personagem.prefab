@@ -23,10 +23,14 @@ GameObject:
   - component: {fileID: 61000011711554156}
   - component: {fileID: 50000011852983628}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 114048090786048822}
 =======
   - component: {fileID: 114930067253905872}
 >>>>>>> 37aafcd... Scene tutorial criada
+=======
+  - component: {fileID: 114048090786048822}
+>>>>>>> 303dd9911138be41f523343746eb8c4adad35056
   m_Layer: 0
   m_Name: personagem
   m_TagString: Untagged
@@ -93,10 +97,14 @@ BoxCollider2D:
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &114048090786048822
 =======
 --- !u!114 &114930067253905872
 >>>>>>> 37aafcd... Scene tutorial criada
+=======
+--- !u!114 &114048090786048822
+>>>>>>> 303dd9911138be41f523343746eb8c4adad35056
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -110,6 +118,9 @@ MonoBehaviour:
   speed: 0
   facingRight: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 303dd9911138be41f523343746eb8c4adad35056
   rb: {fileID: 50000011852983628}
   transform: {fileID: 4000013420163294}
   jumpForce: 550
@@ -118,12 +129,15 @@ MonoBehaviour:
   b:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 =======
   rb: {fileID: 0}
   transform: {fileID: 0}
   jumpForce: 350
   jump: 115
 >>>>>>> 37aafcd... Scene tutorial criada
+=======
+>>>>>>> 303dd9911138be41f523343746eb8c4adad35056
 --- !u!212 &212000012633872044
 SpriteRenderer:
   m_ObjectHideFlags: 1

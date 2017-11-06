@@ -2,20 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-public enum Power {powerUp1, powerUp2, powerUp3};
-=======
 public enum Power {powerUp1, invencibleRush, swordBomb};
->>>>>>> c7e442b... Alterações diversas
-=======
-public enum Power {powerUp1, powerUp2, powerUp3};
->>>>>>> c7c11e0... Revert "Alterações diversas"
-=======
-public enum Power {powerUp1, invencibleRush, swordBomb};
->>>>>>> 303dd99... Atualizações diversas
 public class CharacterBehaviours : MovingCharacter {
 
 	//public bool striking = false;
@@ -31,32 +18,13 @@ public class CharacterBehaviours : MovingCharacter {
 	KeyCode jump = KeyCode.S;//botão pra pular
 	//KeyCode strike = KeyCode.D;//botão pra atacar
 	//Power effect;
-=======
-public class CharacterBehaviours : MonoBehaviour {
-
-	public float speed = 8f;
-	public float jumpForce = 350f;
-	private bool facingRight = true;
-	private float movX;
-	private Rigidbody2D rb;
-	private Transform transform;
-	private int knockback = 0;
-	private int iframes = 0;
-	public KeyCode jump = KeyCode.S;//botão pra pular
->>>>>>> 702112b... Adição do Comportamento dos Pombos
 
 	void Start () {
-<<<<<<< HEAD
 		life = totalLife;
 		speed = 20f;
-=======
-		rb = GetComponent<Rigidbody2D> ();//recebe o componente Ridigbody2D do personagem
-		transform = GetComponent<Transform>();//recebe o componente Transform do personagem 
->>>>>>> 702112b... Adição do Comportamento dos Pombos
 	}
 
 	void FixedUpdate(){
-<<<<<<< HEAD
 		if (knockBack <= 0) {
 			Move (Input.GetAxis ("Horizontal"));//isso passa como parametros os eixos horizontais. É necessário mecher nos axis do Unity e retirar o "a" e o "d" como gatilhos secudarios de horizontals
 			Jump ();
@@ -74,53 +42,6 @@ public class CharacterBehaviours : MonoBehaviour {
 	void GameOver(){
 		SceneManager.LoadScene ("prototipo",LoadSceneMode.Single);
 	}
-=======
-		if (knockback == 0) {
-			Move ();
-			Jump ();
-		}
-		if (knockback > 0) {
-			knockback--;
-		}
-			
-		if (iframes > 0) {
-			iframes--;			
-		}
-	}
-
-	void OnTriggerStay2D (Collider2D col){
-			if (col.gameObject.tag == "Enemy" && iframes == 0) {
-			knockback = 20;
-			iframes = 120;
-			rb.velocity = new Vector2 (0, 0);
-			rb.AddForce (new Vector2 (Mathf.Sign(transform.position.x - col.transform.position.x) * 5f, 2f), ForceMode2D.Impulse);
-		}
-	}
-
-	void Flip(){//função para inverter o sprite
-		facingRight = !facingRight;
-		Vector3 scale = transform.localScale;
-		scale.x *= -1;
-		transform.localScale = scale;
-	}
-
-	void Move(){
-		movX = Input.GetAxis ("Horizontal");
-		//caso esteja se movimentando para a direita e o sprite esteja para o lado esquerdo
-		if (movX > 0 && !facingRight) {
-			Flip ();
-		//caso esteja se movimentando para a esquerda e o sprite esteja para o lado direito
-		} else if (movX < 0 && facingRight) {
-			Flip ();
-		}
-
-		rb.velocity = new Vector2 ((movX * speed), rb.velocity.y);
-	}
-
-	void Jump(){
-		
-		var AbsVelY = Mathf.Abs(rb.velocity.y);
->>>>>>> 702112b... Adição do Comportamento dos Pombos
 
 	void Jump(){//esse código controla o pulo por um sistema dinâmico de contagem simples. O valor de jumps é zerado no código foot
 		if(Input.GetKeyDown(jump) && jumps < 1){//aqui o máximo de pulos está apenas como 1 pois, por algum motivo, o valor de jumps não implementa no primeiro pulo
@@ -209,23 +130,9 @@ public class CharacterBehaviours : MonoBehaviour {
 			GameOver ();
 		}
 	}
-<<<<<<< HEAD
 
 	/*It was too glowing to be called a sword. 
 	 * Magenta, shining, heavy, and far too 80's. 
 	 * Indeed, it was a heap of raw motherfucking neon vapor-hazard.
-<<<<<<< HEAD
-<<<<<<< HEAD
     */
-<<<<<<< HEAD
-=======
->>>>>>> 702112b... Adição do Comportamento dos Pombos
-=======
->>>>>>> c7e442b... Alterações diversas
-=======
-   */
->>>>>>> c7c11e0... Revert "Alterações diversas"
-=======
-    */
->>>>>>> 303dd99... Atualizações diversas
 }

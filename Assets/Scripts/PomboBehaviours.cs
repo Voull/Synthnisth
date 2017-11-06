@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PomboBehaviours : MonoBehaviour {
 
-<<<<<<< HEAD
 	public float homeX;//isso aqui é o ponto de patrulha dele no eixo x
 	public float homeY;//isso aqui é o ponto de patrulha dele no eixo y
 	public float targetX;
@@ -12,15 +11,6 @@ public class PomboBehaviours : MonoBehaviour {
 	public float speed = 6f;//isso aqui é a velocidade do pombo
 	public int attackCD = 0;//isso aqui é um contador para poder dar o próximo ataque
 	public int inAttack = 0;//isso aqui é um contador para controlar os momentos do ataque
-=======
-	public float homeX;
-	public float homeY;
-	public float targetX;
-	public float direction = 1;
-	public float speed = 6f;
-	public int attackCD = 0;
-	public int inAttack = 0;
->>>>>>> 702112b... Adição do Comportamento dos Pombos
 
 	private Rigidbody2D rb;
 	private Transform transform;
@@ -31,7 +21,6 @@ public class PomboBehaviours : MonoBehaviour {
 		homeX = transform.position.x;
 		homeY = transform.position.y;
 	}
-<<<<<<< HEAD
 
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -58,40 +47,11 @@ public class PomboBehaviours : MonoBehaviour {
 		}
 
 		if (inAttack == 60) {//isso zera o contador do ataque
-=======
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-		if (Mathf.Abs(transform.position.x - homeX) > 8) {
-			direction *= -1;
-		}
-			
-		if ((Mathf.Abs (transform.position.x - GameObject.FindWithTag("Player").transform.position.x) < 6) && attackCD == 0 && inAttack == 0) {
-			homeX = transform.position.x;
-			attackCD = 300;
-			inAttack = 1;
-			direction = Mathf.Sign(GameObject.FindWithTag("Player").transform.position.x - transform.position.x);
-		}
-
-
-		if (inAttack >0 && inAttack < 30) {
-			inAttack++;
-			rb.velocity = new Vector2 (direction * speed, -4f);
-		} else if (inAttack >= 30 && inAttack < 60) {
-			inAttack++;
-			rb.velocity = new Vector2 (direction * speed, 0f);
-		} else {
-			rb.velocity = new Vector2 (direction * speed, 0f);
-		}
-
-		if (inAttack == 60) {
->>>>>>> 702112b... Adição do Comportamento dos Pombos
 			inAttack = 0;
 		}
 
 		if (inAttack == 0){
 			if (Mathf.Abs(transform.position.y - homeY) < 0.5f) {
-<<<<<<< HEAD
 				rb.velocity = new Vector2 (rb.velocity.x, 0f);//isso faz a ronda
 			} else {
 				rb.velocity = new Vector2 (rb.velocity.x, 4f);//isso faz a subida final
@@ -121,17 +81,4 @@ public class PomboBehaviours : MonoBehaviour {
 		}
 	}*/
 
-}
-=======
-				rb.velocity = new Vector2 (rb.velocity.x, 0f);
-			} else {
-				rb.velocity = new Vector2 (rb.velocity.x, 4f);
-			}
-		}
-			
-		if (attackCD > 0) {
-			attackCD--;
-		}
-	}
-}
->>>>>>> 702112b... Adição do Comportamento dos Pombos
+}	

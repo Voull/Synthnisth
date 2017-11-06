@@ -1,11 +1,16 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: a546746dac86ff54f8d5b681e5c430a3
 timeCreated: 1494380887
 =======
 guid: db3d082f6bd821342ae316a85fb707fd
 timeCreated: 1495046199
 >>>>>>> 37aafcd... Scene tutorial criada
+=======
+guid: a546746dac86ff54f8d5b681e5c430a3
+timeCreated: 1494380887
+>>>>>>> 303dd9911138be41f523343746eb8c4adad35056
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
