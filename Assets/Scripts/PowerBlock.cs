@@ -7,25 +7,29 @@ public class PowerBlock : MonoBehaviour {
 	public Rigidbody2D rb;//passar o power block como parâmetro no inspector
 	public Collider2D cd;//passar o power block como parâmetro no inspector
 	public Power power;
-	float timer;
-	float initialTime;
+	private float timer;
+	private float initialTime;
+	private bool moving;
+	private Transform target;
 
 	void Start(){
+		transform.position = new Vector3(transform.position.x, transform.position.y, -1);
 		power = (Power)Random.Range (1, 3);//isso faz com que o power block armazene um poder especial aleatório entre 2 e 3
-		rb.AddForce (new Vector2 (Random.Range (-100, 100), 350));//isso faz com que o power block "salte" para uma direção aleatória quando for instanciado
-		initialTime = Time.time;
+		rb.AddForce (new Vector2 (Random.Range (-500, 500), Random.Range (-500, 500)));//isso faz com que o power block "salte" para uma direção aleatória quando for instanciado
+		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+		//initialTime = Time.time;
+		float timer = 5;
 	}
 
 	void Update(){
-		timer = Time.time - initialTime;
-		if (timer >= 5.0f) {//esse bloco destroi o power block caso se passe mais de 5 segundos
-			Destroy (gameObject);
+		while (timer >= 0 && timer <= 4) {
+			while (Vector2.Distance (target.position, transform.position) <= 5)
+				rb.AddForce (new Vector2(Mathf.Sign(transform.position.x-target.position.x), Mathf.Sign(transform.position.y-target.position.y)));				
+			timer -= Time.deltaTime;
 		}
+		if (timer <= 0)
+			Destroy (gameObject);
+		timer -= Time.deltaTime;
 	}
 
-	void OnTriggerEnter2D (Collider2D other){//esse bloco faz com que power block fique intangível enquanto estiver no ar
-		if (other.tag == "Ground") {
-			cd.isTrigger = false;
-		}
-	}
 }

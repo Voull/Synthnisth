@@ -31,7 +31,6 @@ public class CameraScript : MonoBehaviour {
 				*Time.deltaTime);
 		}
 		if (Mathf.Abs (transform.position.y - pt.position.y) > 2 && transform.position.y >= -2) {
-			print ("batata");
 			transform.Translate (
 				new Vector3 (0, (pt.position.y - transform.position.y)*3)
 				*Time.deltaTime);

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pigeon : MovingCharacter {
 
 	public SpriteRenderer sr;
-	private int life = 3;//valor que controla a vida do pombo
+	public PolygonCollider2D pc;
+	private bool isVisible = false;
 	private int inAttack;//valor que controla as fases do ataque
 	private float homeX, homeY, timer;//valores que definem, respectivamente, a posição x da patrulha, a posição y da patrulha e o tempo para o próximo ataque
 	private Transform target;
@@ -18,10 +19,16 @@ public class Pigeon : MovingCharacter {
 	}
 
 	void FixedUpdate () {
-		if (life <= 0){//esse bloco destrói o pombo caso ele fique com vida 0
-			Destroy (gameObject);
+
+		if (sr.isVisible == true && isVisible == false) {
+			target.GetComponent<CharacterBehaviours> ().enemiesOnScreen.Add (this);
+			isVisible = true;
+		}else if (sr.isVisible == false && isVisible == true) {
+			target.GetComponent<CharacterBehaviours> ().enemiesOnScreen.Remove(this);
+			isVisible = false;
 		}
-		if (timer > 0) {//esse bloco reduz o timer
+
+		/*if (timer > 0) {//esse bloco reduz o timer
 			timer --;
 		}
 
@@ -49,27 +56,21 @@ public class Pigeon : MovingCharacter {
 
 		if (inAttack == 60) {//esse bloco zera o contador do ataque
 			inAttack = 0;
-		}
+		}*/
 	}
 
 	public override void Move(float movY){//esse bloco sobrescreve a função Move do MovingCharacter
 		rb.velocity = new Vector2 (direction * speed, movY);
 	}
 
-	void OnTriggerStay2D (Collider2D other){
-		print ("batata");
+	void OnTriggerEnter2D (Collider2D other){
 		if (other.name == "Sword" && other.GetComponent<Sword>().striking == true) {
-			print ("batata");
-			life -= 3;
+			TakingDamage ();
 		}
 	}
 
-	void OnTriggerEnter2D (Collider2D other){
-		print ("batata");
-		if (other.name == "Sword" && other.GetComponent<Sword>().striking == true) {
-			print ("batata");
-			life -= 3;
-		}
+	public void TakingDamage(){
+		Destroy (gameObject);
 	}
 
 }
