@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 7b1e96c0fad33064392a96ed7dad1958
+timeCreated: 1510584762
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sfx: {instanceID: 0}
+  - theme1: {fileID: 8300000, guid: 6c25a411efad5b34d862307e6d83d224, type: 3}
+  - theme2: {fileID: 8300000, guid: 19d06fdc7c2edc240b3529a526a39f52, type: 3}
+  - theme3: {fileID: 8300000, guid: 2c0f4b458fb276042a2d49be3989e531, type: 3}
+  - atual: {instanceID: 0}
+  - ataque: {fileID: 8300000, guid: fd2d5f7f3b0ea964d892ff3b3e7037fd, type: 3}
+  - pulo: {fileID: 8300000, guid: 4db4152f0cfcaee43b1f844ae898306e, type: 3}
+  - powerup: {instanceID: 0}
+  - morte1: {fileID: 8300000, guid: 60520d8a34077d34ba59055448174b67, type: 3}
+  - morte2: {fileID: 8300000, guid: 946d3b47a3bfa40418489182ffd16962, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
