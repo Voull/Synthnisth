@@ -18,7 +18,7 @@ public class PowerBlock : MonoBehaviour {
 		rb.AddForce (new Vector2 (Random.Range (-500, 500), Random.Range (-500, 500)));//isso faz com que o power block "salte" para uma direção aleatória quando for instanciado
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 		//initialTime = Time.time;
-		float timer = 5;
+		timer = 5;
 	}
 
 	void Update(){
